@@ -1,0 +1,141 @@
+<!-- Lista Clientes-->
+{% extends "app3/agenda/../_layouts/base.html" %}
+
+{% block title %}Lista de Clientes{% endblock %}
+
+{% block conteudo %}
+
+<style>
+.testbutton {
+  font-family: "Poppins" , sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 45px;
+  border: none;
+  box-shadow: 1px 1px 1px #2AAB16;
+  background: #FFFFFF;
+  transition: 0.3s;
+}
+.testbutton:hover {
+  color: #FFFFFF !important;
+  background: #33CF1B;
+  background: linear-gradient(to top, #2AAB16, #0C81E8);
+  text-decoration: none;
+  border: 2px groove #FFFFFF;
+}
+.testbutton:active {
+  transform: translatey(8px);
+}
+.effectEx {
+  color: red;
+  font-size: 30px;
+}
+.effectEx:hover {
+  color: #B10B11;
+}
+.effectEx:active {
+    transform: translateY(4px);
+}
+.effectEd {
+  font-size: 30px;
+}
+.effectEd:active {
+    transform: translateY(4px);
+}
+.container a .tool{
+  position: fixed;
+  z-index: 3;
+  color: white;
+  background:#4e555b;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 15px;
+  opacity: 0;
+  transition: 0s;
+  pointer-events: none;
+  white-space: nowrap;
+  font-weight: 400;
+  margin-left: 10px;
+}
+.container a:hover .tool{
+  opacity: 1;
+  pointer-events: auto;
+  transition: all 0.4s ease;
+  transform: translateY(-50%);
+  top: auto;
+}
+</style>
+
+<div class="container" style="padding: 25px 0px">
+  <div class="row">
+    <div class="col-lg-15 col-md-12 col-sm-12 col-xs-12" style="padding: 0px">
+      <div class="card">
+        <div class="card-body" style="padding-bottom: 10px">
+          <h5 class="card-title">Lista de Cliente</h5>
+
+          {% if clientes|length > 0 %}
+            <p class="card-text">
+              Aqui está a lista de <code>Clientes</code> cadastrados.
+            </p>
+
+            <table class="table">
+              <thead class="thead-dark">
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Sobrenome</th>
+                <th scope="col">Nascimento</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">CPF/CNPJ</th>
+                <th scope="col">Telefone</th>
+                <th scope="col">Endereço</th>
+                <th scope="col" class="text-center">Ações</th>
+              </tr>
+              </thead>
+              <tbody>
+              {% for cliente in clientes %}
+                <tr>
+                  <th scope="row">{{ cliente.id }}</th>
+                  <td>{{ cliente.nome }}</td>
+                  <td>{{ cliente.sobrenome }}</td>
+                  <td>{{ cliente.nascimento|date:"d/m/o" }}</td>
+                  <td>{{ cliente.email }}</td>
+                  <td>{{ cliente.CNPJ }}</td>
+                  <td>{{ cliente.telefone }}</td>
+                  <td>{{ cliente.endereco }}</td>
+                  <td class="text-center">
+                    <a href="{% url 'app1:atualiza_cliente' pk=cliente.id %}">
+                      <i class='bx bx-edit effectEd'></i>
+                        <span class="tool">Atualizar</span>
+                    </a>
+                    <a href="{% url 'app1:deleta_cliente' pk=cliente.id %}">
+                      <i class='bx bx-trash effectEx'></i>
+                        <span class="tool">Excluir</span>
+                    </a>
+                  </td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+        {% else %}
+          <div class="text-center mt-5 mb-5 jumbotron">
+            <h5>Nenhum <code>Cliente</code> cadastrado ainda.</h5>
+          </div>
+        {% endif %}
+        <hr>
+          <div class="text-lg-center" style="padding-top: 5px; padding-bottom: 5px">
+            <a href="{% url 'app1:cadastra_cliente' %}">
+                <i class='bx bx-user-plus testbutton' style="border: none; padding-right: 20px;
+                  color: #2AAB16; font-size: 40px"></i>
+                <span class="tool">Cadastrar Cliente</span>
+            </a>
+          </div>
+        <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

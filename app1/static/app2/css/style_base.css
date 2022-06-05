@@ -1,0 +1,164 @@
+/* --- FONTES ---- */
+@font-face {
+  font-family: 'Titillium Web';
+  src: url('../fonts/TitilliumWeb-SemiBold.ttf') format('truetype');
+  src: url('../fonts/TitilliumWeb-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Titillium Web Bold';
+  src: url('../fonts/TitilliumWeb-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('../fonts/ubuntu.regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Cobane';
+  src: url('../fonts/cobane.ttf') format('truetype');
+}
+
+
+.menu_acessibilidade {
+  float: left;
+  display: block;
+}
+.menu_acessibilidade a {
+  padding: 8px 15px;
+  display: block;
+}
+.menu_acessibilidade .dropdown-menu {
+  margin: 0;
+  border-radius: unset;
+}
+.menu_acessibilidade .dropdown-menu li > a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ..................................................................................................... */
+/* ALTO CONTRASTE */
+.contrast,
+.contrast nav,
+.contrast div,
+.contrast li,
+.contrast ol,
+.contrast header,
+.contrast footer,
+.contrast section,
+.contrast main,
+.contrast aside,
+.contrast article {
+    background: black !important;
+    color: white !important;
+}
+
+.contrast h1,
+.contrast h2,
+.contrast h3,
+.contrast h4,
+.contrast h5,
+.contrast h6,
+.contrast p,
+.contrast label,
+.contrast strong,
+.contrast em,
+.contrast cite,
+.contrast q,
+.contrast i,
+.contrast b,
+.contrast u,
+.contrast span {
+    color: white !important;
+}
+
+.contrast a, .contrast a b { color: yellow !important; }
+.contrast a:hover,
+.contrast a:active,
+.contrast a:focus { text-decoration: underline !important; }
+
+.contrast button,
+.contrast input[type=button],
+.contrast input[type=reset],
+.contrast input[type=submit] {
+    background: black !important;
+    color: yellow !important;
+    border-color: yellow !important;
+}
+.contrast .btn_branco { border-color: yellow !important; }
+
+.contrast input[type=text],
+.contrast input[type=password],
+.contrast input[type=url],
+.contrast input[type=search],
+.contrast input[type=email],
+.contrast input[type=tel],
+.contrast input[type=date],
+.contrast input[type=month],
+.contrast input[type=week],
+.contrast input[type=datetime],
+.contrast input[type=datetime-local],
+.contrast textarea,
+.contrast input[type=number] {
+    background: black !important;
+    border: 1px solid white !important;
+    color: white !important;
+}
+
+.contrast img { background-color: #fff; }
+.contrast .box_shadow { background-color: rgba(0,0,0,0.15) !important; }
+.contrast .menu_principal > li > a, .contrast .menu_principal > .open > a:hover { color: yellow !important; }
+.contrast .menu_principal > li > a:focus,
+.contrast .menu_principal > li > a:hover,
+.contrast .menu_principal > li > a:active,
+.contrast .menu_principal > .open > a,
+.contrast .menu_principal > .open > a:active,
+.contrast .menu_principal > .open > a:focus,
+.contrast .menu_principal > .open > a:hover {
+    border-bottom: unset !important;
+}
+.contrast .dropdown-menu { background: black !important; }
+.contrast .box_gray a:hover,
+.contrast .box_gray a:focus,
+.contrast .box_gray a:active,
+.contrast .dropdown-menu > li > a:focus,
+.contrast .dropdown-menu > li > a:active,
+.contrast .dropdown-menu > li > a:hover {
+  background: black !important;
+  text-decoration: underline;
+}
+
+.contrast img.on-contrast-force-gray { filter: grayscale(100%) contrast(120%); }
+.contrast img.on-contrast-force-white { filter: brightness(0) invert(1); }
+.contrast #enviar_contato ::-webkit-input-placeholder { color: #fff; }
+.contrast #enviar_contato :-ms-input-placeholder { color: #fff; }
+.contrast #enviar_contato ::placeholder { color: #fff; }
+.contrast #searchform ::-webkit-input-placeholder { color: #fff; }
+.contrast #searchform :-ms-input-placeholder { color: #fff; }
+.contrast #searchform ::placeholder { color: #fff; }
+.contrast .form_busca ::-webkit-input-placeholder { color: #fff; }
+.contrast .form_busca :-ms-input-placeholder { color: #fff; }
+.contrast .form_busca ::placeholder { color: #fff; }
+.contrast #menu_fixo { border-bottom: 2px solid #fff; }
+.contrast .form_busca .btn { background-color: #fff !important; }
+.contrast .social_icons img { background-color: transparent !important; }
+.contrast #searchform #searchsubmit {
+  background: url(../imgs/search.png) no-repeat scroll center center #fff !important;
+  background-size: 20px !important;
+}
+
+/* ..................................................................................................... */
+/* LINKS SUBLINHADOS */
+.links_sublinhados a { text-decoration: underline !important; }
+
+/* ..................................................................................................... */
+/* ESCALAS DE CINZA */
+.grayscale {
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: grayscale(100%);
+}

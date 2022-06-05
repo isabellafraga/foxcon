@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+ <html lang="pt-br">
+   {% load static %}
+
+     <head>
+           <meta charset="UTF-8">
+           <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+           <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+           <!-- Title -->
+           <title>{% block title %}Foxcon Sistemas{% endblock %}</title>
+
+           <!-- Favicon -->
+           <link rel="shortcut icon" href="{% static 'app2/imgs/logoP.png' %}" type="image/png">
+
+           <!-- Arquivos CSS -->
+           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+           <link rel="stylesheet" type="text/css" href="{% static "app2/css/master.css" %}">
+           <link rel="stylesheet" type="text/css" href="{% static 'app2/css/font-awesome.min.css' %}">
+	       <link rel="stylesheet"  href="{% static 'app2/css/style_default.css' %}">
+
+
+           <!-- Boxicons CDN Link -->
+           <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-147102043-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'UA-147102043-1');
+		</script>
+
+     </head>
+
+<body>
+
+   <div id="fb-root"></div>
+         <script async defer crossorigin="anonymous"
+             src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v3.2&appId=3056845927722925&autoLogAppEvents=1"></script>
+
+ <div class="sidebar">
+    <div class="logo-details">
+      <img class="icon" alt="Base Security" src="{% static "app2/imgs/logo.png" %}" data-aos-easing="ease-out" data-aos="fade-in" data-aos-duration="550" height="180px" >
+
+        <i class='bx bx-menu' id="btn"  style="font-size: 30px"></i>
+    </div>
+    <ul class="nav-list" style="padding-left: 0px; font-size: 30px">
+
+        <!-- Somente Usúario Cadastrado -->
+
+            {% if user.is_authenticated %}
+
+      <li>
+        <a href="{% url 'app1:indexx' %}" style="font-size: 20px; color: #141764">
+          <i class='bx bx-home' style="font-size: 30px"></i>
+          <span class="links_name" style="font-size: 19px">Início</span>
+        </a>
+         <span class="tooltip" style="font-size: 19px">Início</span>
+      </li>
+
+      <li>
+       <a href="{% url 'app1:lista_clientes' %}" style="font-size: 20px; color: #141764">
+         <i class='bx bx-user'  style="font-size: 30px"></i>
+         <span class="links_name" style="font-size: 19px">Cliente</span>
+       </a>
+       <span class="tooltip">Cliente</span>
+     </li>
+     <li>
+       <a href="{% url 'app1:lista_orcamentos' %}" style="font-size: 20px; color: #141764">
+         <i class='bx bx-folder'  style="font-size: 30px"></i>
+         <span class="links_name" style="font-size: 19px">Orçamento</span>
+       </a>
+       <span class="tooltip">Orçamento</span>
+     </li>
+     <li>
+       <a href="{% url 'app1:agenda-events' %}" style="font-size: 20px; color: #141764">
+         <i class='bx bx-calendar'  style="font-size: 30px"></i>
+         <span class="links_name" style="font-size: 19px">Agenda</span>
+       </a>
+       <span class="tooltip">Agenda</span>
+     </li>
+     <li>
+       <a href="{% url 'app1:lista_metas' %}" style="font-size: 20px; color: #141764">
+         <i class='bx bx-bar-chart-alt-2'  style="font-size: 30px"></i>
+         <span class="links_name" style="font-size: 19px">Meta</span>
+       </a>
+       <span class="tooltip">Meta</span>
+     </li>
+     <li>
+       <a href="{% url 'app1:lista_produtos_funcionario' %}" style="font-size: 20px; color: #141764">
+         <i class='bx bx-package'  style="font-size: 30px"></i>
+         <span class="links_name" style="font-size: 19px">Produto</span>
+       </a>
+       <span class="tooltip">Produto</span>
+     </li>
+
+        <!-- Somente Administrador -->
+              {% if user.is_staff %}
+
+     <li>
+       <a href="{% url 'app1:lista_funcionarios' %}" style="font-size: 20px; color: #141764">
+         <i class='bx bx-id-card'  style="font-size: 30px"></i>
+         <span class="links_name" style="font-size: 19px">Funcionário</span>
+       </a>
+       <span class="tooltip">Funcionário</span>
+     </li>
+     <li>
+       <a href="{% url 'app1:principalfornecedor' %}"  style="font-size: 20px; color: #141764">
+         <i class='bx bx-store'  style="font-size: 30px"></i>
+         <span class="links_name" style="font-size: 19px">Fornecedor</span>
+       </a>
+       <span class="tooltip">Fornecedor</span>
+     </li>
+     <li>
+       <a href="{% url 'admin:index' %}"  style="font-size: 20px; color: #141764">
+         <i class='bx bx-cog'  style="font-size: 30px"></i>
+         <span class="links_name" style="font-size: 19px">Admin</span>
+       </a>
+       <span class="tooltip">Admin</span>
+     </li>
+              {% endif %}
+        {% endif %}
+     <li class="profile">
+         <div class="profile-details">
+           <div class="name_job">
+             <div class="name" style="font-size: 13px">Usuário</div>
+             <div class="job" style="font-size: 17px">{{ user.first_name }}</div>
+           </div>
+              <!-- Logout do Sistema -->
+        <a href="{% url 'app1:logout' %}">
+         <i class='bx bx-log-out' id="log_out"  style="font-size: 30px"></i>
+        </a>
+         </div>
+     </li>
+    </ul>
+  </div>
+
+  <section class="home-section">
+                        <!-- Conteúdo do site -->
+                     {% block conteudo %}{% endblock %}
+  </section>
+
+     <div id="fundo" style="background-color: #bdc4e0;"></div>
+               <style>
+	                 .page_content img { max-width: 100% !important; height: auto !important; }
+               </style>
+
+		<!-- <script src="{static 'app2/js/jquery-scrolltofixed.js' %}"></script> -->
+
+		<div vw class="enabled" style="padding-top: 40px">
+			<div vw-access-button class="active"></div>
+				<div vw-plugin-wrapper>
+				<div class="vw-plugin-top-wrapper"></div>
+			</div>
+		</div>
+
+		<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+		<script>
+			new window.VLibras.Widget('https://vlibras.gov.br/app');
+		</script>
+
+<script>
+    $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+
+    <style>
+	    div[vw] { top: 50% !important; }
+    </style>
+
+                         <!-- Scripts .js -->
+        <script src="{% static 'app2/js/jquery.min.js'%}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="{% static 'app2/js/events.js' %}"></script>
+        <script src="{% static 'app2/js/ScriptBase.js' %}"></script>
+        <script src="{% static 'app2/js/scripts.js' %}"></script>
+        <script src="{% static 'app2/js/bootstrap.min.js'%}"></script>
+</body>
+ </html>

@@ -1,0 +1,105 @@
+<!-- Estendemos do template base -->
+{% extends "app3/agenda/../_layouts/base.html" %}
+
+<!-- Bloco que define o <title></title> da nossa página -->
+{% block title %}Exclusão de Produto{% endblock %}
+
+<!-- Bloco de conteúdo da nossa página -->
+{% block conteudo %}
+
+<style>
+.testbuttonc {
+  font-family: "Poppins" , sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 45px;
+  border: none;
+  box-shadow: 1px 1px 1px #BF0000;
+  background: #FFFFFF;
+  transition: 0.3s;
+}
+.testbuttonc:hover {
+  color: #FFFFFF !important;
+  background: #800000;
+  background: linear-gradient(to top, #FF0000, #E87715);
+  text-decoration: none;
+  border: 2px groove #FFFFFF;
+}
+.testbuttonc:active {
+  transform: translatey(8px);
+}
+.testbutton {
+  font-family: "Poppins" , sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 45px;
+  border: none;
+  box-shadow: 1px 1px 1px #0C81E8 ;
+  background: #FFFFFF;
+  transition: 0.3s;
+}
+.testbutton:hover {
+  color: #FFFFFF !important;
+  background: #0C81E8 ;
+  background: linear-gradient(to top, #0C81E8, #66EE74);
+  text-decoration: none;
+  border: 2px groove #FFFFFF;
+}
+.testbutton:active {
+  transform: translatey(8px);
+}
+.container a .tool{
+  position: fixed;
+  z-index: 3;
+  color: white;
+  background:#4e555b;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 15px;
+  opacity: 0;
+  transition: 0s;
+  pointer-events: none;
+  white-space: nowrap;
+  font-weight: 400;
+  margin-left: 10px;
+}
+.container a:hover .tool{
+  opacity: 1;
+  pointer-events: auto;
+  transition: all 0.4s ease;
+  transform: translateY(-50%);
+  top: auto;
+}
+</style>
+
+  <div class="container" style="padding-top: 50px">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Exclusão de Produtos</h5>
+
+        <p class="card-text">
+          Você tem certeza que quer excluir o produto <b>{{ produto.nomep }}</b>?
+        </p>
+
+        <form method="post">
+          {% csrf_token %}
+
+          <hr />
+          <div class="text-right">
+            <a href="{% url 'app1:lista_produtos' %}" class="">
+                <i class='bx bx-share testbutton' style="font-size: 35px; padding-right: 20px; border: none"></i>
+                <span class="tool">Voltar</span>
+            </a>
+            <a>
+              <button class='bx bx-user-x testbuttonc' style="font-size: 40px;color: #BF0000; padding-right: 20px; border: none"></button>
+              <span class="tool">Excluir</span>
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

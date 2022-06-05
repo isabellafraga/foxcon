@@ -1,0 +1,79 @@
+<!-- Comentarios de Serviços -->
+{% extends "app3/_layouts/base.html" %}{% load static %}
+
+{% block conteudo %}
+    <main role="main" style="padding: 50px 50px 0px">
+      <div class="card">
+        <div class="card-header d-flex justify-content-center">
+          <div class="align-self-center text-center" style="margin: 15px">
+            <strong style="margin: 15px">
+              {{ event.date|date:"l" }}
+            </strong><br>
+            <h1 class="display-4" style="margin: 15px">
+              {{ event.date.day }}
+            </h1><br>
+  	        {{ event.date|date:"d/m/Y" }}
+          </div>
+        </div>
+        <div class="card-body">
+          <div role="alert" class="d-flex alert {% if event.priority == '1' %}
+            alert-success{% elif event.priority == '2' %} alert-warning{% elif event.priority == '3' %}
+            alert-danger{% else %} alert-secondary{% endif %}">
+            <div class="p-2 text-truncated">
+              Serviço: {{ event.event }} <br> Horário: {{ event.hora }}
+            </div>
+          </div>
+        {% if comments|length > 0 %}
+          <div class="container py-2">
+          {% for comment in comments %}
+            <div class="media mb-2">
+                <div class="media-body">
+                  <blockquote class="blockquote">
+                    &quot;{{ comment.text }}&quot;
+                  </blockquote>
+                  <footer class="blockquote-footer">
+                    <strong>{{ comment.usuario }}</strong> | {{ comment.commented }}
+                  </footer>
+                </div>
+              </div>
+            {% endfor %}
+            </div>
+          {% else %}
+            <div class="alert alert-secondary text-center">
+              Não há comentários para este agendamento!
+            </div>
+          {% endif %}
+          <hr/>
+          <div class="container">
+            <form method="post" action="">
+              {% csrf_token %}
+              <input type="hidden" name="event" value="{{ event.id }}">
+              <div class="form-group">
+                <div class="col-auto">
+                  <input type="text" class="form-control form-control-sm" id="addInputUsuario" name="usuario" placeholder="Escreva seu nome" required>
+                </div>
+              </div>
+                  <div class="form-group">
+                <div class="col-auto">
+                    <input type="text" class="form-control form-control-sm" id="addInputComment" name="text" placeholder="Escreva seu comentário" required>
+                </div>
+                </div>
+
+
+                <div class="col-auto mb-2">
+                     <a href="{% url 'app1:agenda-events-all' %}">
+                         <i class='bx bx-x effectEx' style="padding-right: 10px;
+                            font-size: 30px; color: #B10B11"></i>
+                     </a>
+                     <button type="submit" class='bx bx-check effectEd' style="font-size: 30px;
+                            border: none; background: none; color: #2AAB16">
+                     </button>
+                </div>
+                <hr/>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+{% include "app3/agenda/modals/new.html" %}
+{% endblock %}

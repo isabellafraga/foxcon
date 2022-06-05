@@ -1,0 +1,149 @@
+{% extends "app3/agenda/../_layouts/base.html" %}
+
+{% block title %}Metas{% endblock %}
+
+{% block conteudo %}
+
+<style>
+.testbutton {
+  font-family: "Poppins" , sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 45px;
+  border: none;
+  box-shadow: 1px 1px 1px #2AAB16;
+  background: #FFFFFF;
+  transition: 0.3s;
+}
+.testbutton:hover {
+  color: #FFFFFF !important;
+  background: #33CF1B;
+  background: linear-gradient(to top, #2AAB16, #0C81E8);
+  text-decoration: none;
+  border: 2px groove #FFFFFF;
+}
+.testbutton:active {
+  transform: translatey(8px);
+}
+.effectEx {
+  color: red;
+  font-size: 30px;
+}
+.effectEx:hover {
+  color: #B10B11;
+}
+.effectEx:active {
+    transform: translateY(4px);
+}
+.effectEd {
+  font-size: 30px;
+}
+.effectEd:active {
+    transform: translateY(4px);
+}
+.container a .tool{
+  position: fixed;
+  z-index: 3;
+  color: white;
+  background:#4e555b;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 15px;
+  opacity: 0;
+  transition: 0s;
+  pointer-events: none;
+  white-space: nowrap;
+  font-weight: 400;
+  margin-left: 10px;
+}
+.container a:hover .tool{
+  opacity: 1;
+  pointer-events: auto;
+  transition: all 0.4s ease;
+  transform: translateY(-50%);
+  top: auto;
+}
+ </style>
+
+<div class="container" style="padding: 25px 0px">
+  <div class="row">
+    <div class="col-lg-15 col-md-12 col-sm-12 col-xs-12" style="padding: 0px">
+      <div class="card">
+        <div class="card-body" style="padding-bottom: 10px">
+          <h5 class="card-title">Lista de Metas</h5>
+
+          {% if metas|length > 0 %}
+            <p class="card-text">
+              Aqui está a lista de <code>Metas</code> cadastrados.
+            </p>
+            <div class="search-list">
+            <table class="table" id="myTable">
+              <thead class="thead-dark">
+              <tr class="text-center">
+                <th scope="col">Id</th>
+                <th scope="col">Cargo</th>
+                <th scope="col">Data Criação/Modificação</th>
+                <th scope="col">Mês de Referência</th>
+                <th scope="col">Meta</th>
+                <th scope="col">Concluída</th>
+                  {% if user.is_staff %}
+                      <th scope="col" class="text-center">Ações</th>
+                  {% else %}
+                      <th scope="col" class="text-center">----</th>
+                  {% endif %}
+              </tr>
+              </thead>
+              <tbody>
+              {% for meta in metas %}
+                <tr class="text-center">
+                  <th scope="row">{{ meta.id }}</th>
+                  <td>{{ meta.cargo }}</td>
+                  <td>{{ meta.data|date:"d/m/o" }}</td>
+                  <td>{{ meta.meses }}</td>
+                  <td>{{ meta.meta }}</td>
+                  <td>{{ meta.concluida }}</td>
+
+                      {% if user.is_staff %}
+                         <td class="text-center" style="padding-top: 20px; padding-bottom: 5px">
+                    <a href="{% url 'app1:atualiza_meta' pk=meta.id %}">
+                      <i class='bx bx-edit effectEd'></i>
+                        <span class="tool">Atualizar</span>
+                    </a>
+                    <a href="{% url 'app1:deleta_meta' pk=meta.id %}">
+                      <i class='bx bx-trash effectEx'></i>
+                        <span class="tool">Excluir</span>
+                    </a>
+                      {% else %}
+                              <th scope="col" class="text-center">----</th>
+                         </td>
+                      {% endif %}
+
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+            </div>
+        {% else %}
+          <div class="text-center mt-5 mb-5 jumbotron">
+            <h5>Nenhuma <code>Meta</code> cadastrado ainda.</h5>
+          </div>
+        {% endif %}
+          <hr />
+        {% if user.is_staff %}
+          <div class="text-center" style="padding-top: 5px; padding-bottom: 5px">
+            <a href="{% url 'app1:cadastra_meta' %}">
+                <i class='bx bx-list-plus testbutton' style="border: none; padding-right: 20px;
+                  color: #2AAB16; font-size: 40px"></i>
+                <span class="tool">Cadastrar Meta</span>
+            </a>
+          </div>
+        {% endif %}
+        <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

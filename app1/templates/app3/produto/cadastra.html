@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+{% extends "app3/agenda/../_layouts/base.html" %}
+{% load widget_tweaks %}
+{% load static %}
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Produto</title>
+
+</head>
+<body>
+    {% block conteudo %}
+
+<style>
+.testbutton {
+  font-family: "Poppins" , sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 45px;
+  border: none;
+  box-shadow: 1px 1px 1px #00F929;
+  background: #FFFFFF;
+  transition: 0.3s;
+}
+.testbutton:hover {
+  color: #FFFFFF !important;
+  background: #33CF1B;
+  background: linear-gradient(to top, #33CF1B, #0C81E8);
+  text-decoration: none;
+  border: 2px groove #FFFFFF;
+}
+.testbutton:active {
+  transform: translatey(8px);
+}
+.testbuttonv {
+  font-family: "Poppins" , sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 45px;
+  border: none;
+  box-shadow: 1px 1px 1px #BF0000;
+  background: #FFFFFF;
+  transition: 0.3s;
+}
+.testbuttonv:hover {
+  color: #FFFFFF !important;
+  background: #800000;
+  background: linear-gradient(to top, #FF0000, #E87715);
+  text-decoration: none;
+  border: 2px groove #FFFFFF;
+}
+.testbuttonv:active {
+  transform: translatey(8px);
+}
+.container a .tool{
+  position: fixed;
+  z-index: 3;
+  color: white;
+  background:#4e555b;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 15px;
+  opacity: 0;
+  transition: 0s;
+  pointer-events: none;
+  white-space: nowrap;
+  font-weight: 400;
+  margin-left: 10px;
+}
+.container a:hover .tool{
+  opacity: 1;
+  pointer-events: auto;
+  transition: all 0.4s ease;
+  transform: translateY(-50%);
+  top: 68%;
+}
+</style>
+
+     <div class="container" style="padding-top: 25px; padding-bottom: 25px">
+       <div class="row">
+         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+           <div class="card">
+             <div class="card-body">
+                <h5 class="card-title">Cadastro de Produto</h5>
+                <p class="card-text">Complete o formulário abaixo para cadastrar um novo <code>Produto.</code></p>
+
+                <form enctype="multipart/form-data" method="POST">
+                    {% csrf_token %}
+                                        <!-- Nome -->
+                    <div class="input-group mb-3">
+                         <div class="input-group-prepend">
+                               <span class="input-group-text">Nome</span>
+                         </div>
+                            {% render_field form.nomep class+="form-control" %}
+                    </div>
+                                        <!-- Categoria -->
+                    <div class="input-group mb-3">
+                         <div class="input-group-prepend">
+                               <span class="input-group-text">Categoria</span>
+                         </div>
+                            {% render_field form.categoria class+="form-control" %}
+                    </div>
+                                       <!-- Quantidade -->
+                    <div class="input-group mb-3">
+                         <div class="input-group-prepend">
+                                   <span class="input-group-text">Quantidade</span>
+                         </div>
+                            {% render_field form.quantidade class+="form-control" %}
+                    </div>
+                                      <!-- Preço -->
+                    <div class="input-group mb-3">
+                         <div class="input-group-prepend">
+                               <span class="input-group-text">Preço</span>
+                         </div>
+                            {% render_field form.preco class+="form-control" %}
+                    </div>
+                                        <!-- Fornecedor -->
+                    <div class="input-group mb-3">
+                         <div class="input-group-prepend">
+                               <span class="input-group-text">Fornecedor</span>
+                         </div>
+                            {% render_field form.fornecedor class+="form-control" %}
+                    </div>
+                       <hr>
+                            <div class="text-center">
+                                <a href="{% url 'app1:lista_produtos' %}">
+                                    <i class='bx bx-x testbuttonv'
+                                      style="border: none; font-size: 45px; padding-right: 20px; color: #BF0000">
+                                    </i>
+                                    <span class="tool">Cancelar</span>
+                                </a>
+                                <a>
+                                  <button class='bx bx-check testbutton'
+                                    style="border: none; font-size: 45px; padding-right: 20px; color: #2AAB16">
+                                  </button>
+                                  <span class="tool">Cadastrar</span>
+                                </a>
+                            </div>
+                    <hr>
+                </form>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   {% endblock %}
+</body>
+</html>

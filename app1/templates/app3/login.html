@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt-br">
+        <head>
+            <meta charset="UTF-8">
+            <title>Foxcon Sistemas - Login</title>
+            <link rel="stylesheet" href={% static "app2/css/style.css" %}>
+            <!-- Favicon -->
+           <link rel="shortcut icon" href="{% static 'app2/imgs/logoP.png' %}" type="image/png">
+        </head>
+    <body class="container-fluid">
+
+        <div class="login-box">
+
+            <form method="post" action="{% url 'app1:login' %}">
+                <a class="logo" href="{% url 'app1:indexx' %}">
+                <img src="{% static "app2/imgs/logoL.png" %}" class="logo" alt="Minha Imagem" style="width: 200px; height: 220px; padding-left: 130px; padding-right: 0px; padding-bottom: 25px"></a>
+                {% csrf_token %}
+                <h1 class="font-effect-outline"></h1>
+                <div class="textbox">
+                    <i class="fas fa-user"></i>
+                    <input class="font-effect-outline" type="text" name="usuario" placeholder="Usuário" style="padding-top: 28px">
+                </div>
+                <div class="textbox">
+                    <i class="fas fa-lock"></i>
+                    <input class="font-effect-outline form-control" type="password" name="senha" placeholder="Senha" id="id_password">
+                    <i class="far fa-eye" id ="togglePassword" style="margin-left: 240px; cursor: pointer; color: #141764;"></i>
+                </div>
+                     <input type="submit" class="btn font-effect-outline" value="Entrar">
+            </form>
+        </div>
+    <script>
+          const togglePassword = document.querySelector('#togglePassword');
+  const password = document.querySelector('#id_password');
+
+  togglePassword.addEventListener('click', function (e) {
+    // toggle the type attribute
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    // toggle the eye slash icon
+    this.classList.toggle('fa-eye-slash');
+});
+    </script>
+    </body>
+</html>

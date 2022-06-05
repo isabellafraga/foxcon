@@ -1,0 +1,269 @@
+    <!-- Modal Criação de Serviço Agenda -->
+{% load static %}
+{% load widget_tweaks %}
+        <style>
+.testbuttonh {
+  font-family: "Poppins" , sans-serif;
+  font-weight: bold;
+  color: #000000 !important;
+  font-size: 14px;
+  text-shadow: 1px 1px 0px #7CACDE;
+  box-shadow: 1px 1px 1px #BEE2F9;
+  padding: 10px 20px;
+  border-radius: 45px;
+  border: 2px groove #3866A3;
+  background: #63B8EE;
+  background: linear-gradient(to top, #63B8EE, #3866A3);
+  transition: 0.3s;
+  margin-right: 5px;
+}
+.testbuttonh:hover {
+  color: #FFFFFF !important;
+  background: #468CCF;
+  background: linear-gradient(to top, #3866A3, #63B8EE);
+  text-decoration: none;
+  border: 2px groove #FFFFFF;
+}
+.testbuttonh:active {
+  transform: translatey(8px);
+}
+.testbuttont {
+  font-family: "Poppins" , sans-serif;
+  font-weight: bold;
+  color: #000000 !important;
+  font-size: 14px;
+  text-shadow: 1px 1px 0px #FFB508;
+  box-shadow: 1px 1px 1px #FFEF14;
+  padding: 10px 20px;
+  border-radius: 45px;
+  border: 2px groove #FAB30C;
+  background: #FFEF14;
+  background: linear-gradient(to top, #FFEF14, #FFB508);
+  transition: 0.3s;
+  margin-right: 2px;
+}
+.testbuttont:hover {
+  color: #FFFFFF !important;
+  background: #FAB30C;
+  background: linear-gradient(to top, #FFB508, #FFEF14);
+  text-decoration: none;
+  border: 2px groove #FFFFFF;
+}
+.testbuttont:active {
+  transform: translatey(8px);
+}
+.testbuttonn {
+  font-family: "Poppins" , sans-serif;
+  font-weight: bold;
+  color: #000000 !important;
+  font-size: 14px;
+  text-shadow: 1px 1px 0px #2ADE54;
+  box-shadow: 1px 1px 1px #00F929;
+  padding: 10px 20px;
+  border-radius: 45px;
+  border: 2px groove #22A308;
+  background: #00994D;
+  background: linear-gradient(to top, #70FF33, #00994D);
+  transition: 0.3s;
+}
+.testbuttonn:hover {
+    color: #FFFFFF !important;
+    background: #33CF1B;
+    background: linear-gradient(to top, #33CF1B, #66EE74);
+    text-decoration: none;
+    border: 2px groove #FFFFFF;
+}
+.testbuttonn:active {
+  transform: translatey(8px);
+}
+.testbuttonc {
+  font-family: "Poppins" , sans-serif; !important;
+  font-weight: bold;
+  color: #000000 !important;
+  font-size: 14px;
+  text-shadow: 1px 1px 0px #768194;
+  box-shadow: 1px 1px 1px #8995AB;
+  padding: 10px 20px;
+  border-radius: 45px;
+  border: 2px groove #4E5561;
+  background: #8996AB;
+  background: linear-gradient(to top, #8996AB, #4E5561);
+  transition: 0.3s;
+  margin-right: 5px;
+}
+.testbuttonc:hover {
+  color: #FFFFFF !important;
+  background: #8996AB;
+  background: linear-gradient(to top, #4E5561, #8996AB);
+  text-decoration: none;
+  border: 2px groove #FFFFFF;
+}
+.testbuttonc:active {
+  transform: translatey(8px);
+}
+.testbutton {
+  font-family: "Poppins" , sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 45px;
+  border: none;
+  box-shadow: 1px 1px 1px #00F929;
+  background: #FFFFFF;
+  transition: 0.3s;
+}
+.testbutton:hover {
+  color: #FFFFFF !important;
+  background: #33CF1B;
+  background: linear-gradient(to top, #33CF1B, #0C81E8);
+  text-decoration: none;
+  border: 2px groove #FFFFFF;
+}
+.testbutton:active {
+  transform: translatey(8px);
+}
+.testbuttonv {
+  font-family: "Poppins" , sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 45px;
+  border: none;
+  box-shadow: 1px 1px 1px #BF0000;
+  background: #FFFFFF;
+  transition: 0.3s;
+}
+.testbuttonv:hover {
+  color: #FFFFFF !important;
+  background: #800000;
+  background: linear-gradient(to top, #FF0000, #E87715);
+  text-decoration: none;
+  border: 2px groove #FFFFFF;
+}
+.testbuttonv:active {
+  transform: translatey(8px);
+}
+.modal a .tool{
+  position: fixed;
+  z-index: 3;
+  color: white;
+  background:#4e555b;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  font-size: 15px;
+  opacity: 0;
+  transition: 0s;
+  pointer-events: none;
+  white-space: nowrap;
+  font-weight: 400;
+  margin-left: 10px;
+  padding: 10px 12px;
+}
+.modal a:hover .tool{
+  opacity: 1;
+  pointer-events: auto;
+  transition: all 0.4s ease;
+  transform: translateY(-50%);
+  top: 68%;
+}
+.container a .tool{
+  position: fixed;
+  z-index: 3;
+  color: white;
+  background:#4e555b;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 15px;
+  opacity: 0;
+  transition: 0s;
+  pointer-events: none;
+  white-space: nowrap;
+  font-weight: 400;
+  margin-left: 10px;
+}
+.container a:hover .tool{
+  opacity: 1;
+  pointer-events: auto;
+  transition: all 0.4s ease;
+  transform: translateY(-50%);
+  top: auto;
+}
+        </style>
+    {% if hide_new_button != True %}
+
+    <div class="container text-center">
+      <a href="{% url 'app1:agenda-events' %}" class="btn testbuttonc mb-auto">
+          <i class="bx bx-share" style="font-size: 35px"></i>
+          <span class="tool">Voltar</span>
+      </a>
+      <a href="{% url 'app1:agenda-events-day' today.year today.month today.day %}" class="btn testbuttonh mb-auto">
+          <i class="bx bx-calendar" style="font-size: 35px"></i>
+          <span class="tool">Agenda de Hoje</span>
+      </a>
+      <a href="{% url 'app1:agenda-events-all' %}" class="btn testbuttont mb-auto">
+          <i class="bx bx-calendar-week" style="font-size: 35px"></i>
+          <span class="tool">Todos Agendamentos</span>
+      </a>
+      <a>
+         <button type="submit" class="btn testbuttonn mt-3 mb-3" data-toggle="modal" data-target="#addEvent">
+           <i class="bx bx-calendar-plus" style="font-size: 35px"></i>
+         </button>
+          <span class="tool">Novo Agendamento</span>
+      </a>
+    </div>
+    {% endif %}
+
+    <div class="modal fade" data-backdrop="false" id="addEvent" tabindex="-1" role="dialog" aria-labelledby="addEventLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <form action="{% url 'app1:agenda-events-new' %}" enctype="multipart/form-data" method="post">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addEventLabel">Agendamento</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" style="font-size: 20px">
+              {% csrf_token %}
+
+              <div class="form-group">
+                <label for="addInputDate">Data</label>
+                <input style="font-size: 18px" type="date" class="form-control" id="addInputDate" name="date" placeholder="Insira a data do Serviço" value="{{ today|date:'Y-m-d' }}" required>
+
+              </div>
+              <div class="form-group">
+                <label for="addInputHora">Hora</label>
+                <input style="font-size: 18px" type="time" class="form-control" id="addInputHora" name="hora" placeholder="Insira a hora do Serviço" required>
+              </div>
+              <div class="form-group">
+                <label for="addInputEvent">Descrição</label>
+                <input style="font-size: 18px" type="text" class="form-control" id="addInputEvent" name="event" placeholder="Descrição do Serviço" required>
+              </div>
+              <div class="form-group">
+                <label for="addInputPriority">Prioridade</label>
+                <select class="form-control" id="addInputPriority" name="priority" style="font-size: 18px">
+                {% for value, priority in priorities %}
+                  <option value="{{ value }}">{{ priority }}</option>
+                {% endfor %}
+                </select>
+              </div>
+            <div class="modal-footer">
+                <a>
+                   <button type="button" class='btn bx bx-x testbuttonv' data-dismiss="modal"
+                         style="border: none; font-size: 28px; padding-right: 20px; color: #BF0000">
+                   </button>
+                    <span class="tool">Cancelar</span>
+                </a>
+                <a>
+                   <button type="submit" class='btn bx bx-check testbutton'
+                      style="border: none; font-size: 28px; padding-right: 20px; color: #2AAB16">
+                   </button>
+                    <span class="tool">Cadastrar</span>
+                </a>
+            </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,108 @@
+@import "https://use.fontawesome.com/releases/v5.5.0/css/all.css";
+@import "https://fonts.googleapis.com/css?family=Audiowide";
+@import "https://fonts.googleapis.com/css?family=Ubuntu|Lora";
+body{
+  margin: 0;
+  padding: 0;
+  background-image: url(../imgs/fundo-login.png);
+  background-size: cover;
+  font-family: "Ubuntu", sans-serif;
+  opacity: 0.6;
+  width: 100%;
+  height: auto;
+}
+.logo{
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 28.5%;
+  left: 35%;
+  padding-right: 10px;
+  transform: translate(-50%,-50%);
+  opacity: revert;
+
+}
+.login-box{
+  width: 280px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  color: #141764;
+  opacity: revert;
+  -webkit-filter: contrast(150%) saturate(110%);
+  filter: contrast(150%) saturate(110%);
+}
+.login-box h1{
+  float: right;
+  font-size: 40px;
+  padding-left: 20px;
+  padding-right: 25px;
+  padding-bottom: 10px;
+  font-family: "Audiowide", sans-serif;
+  text-shadow: 5px 5px 5px #ababab;
+  -webkit-filter: contrast(100%) saturate(100%);
+  filter: contrast(100%) saturate(100%);
+}
+.textbox{
+  width: 100%;
+  overflow: hidden;
+  font-size: 20px;
+  padding: 8px 0;
+  margin: 9px 0;
+  border-bottom: 1px solid #393536;
+  font-family: "Ubuntu", sans-serif;
+  opacity: revert;
+  border-radius: 15px;
+  -webkit-filter: contrast(100%) saturate(100%);
+  filter: contrast(100%) saturate(100%);
+}
+.textbox i{
+  width: 26px;
+  float: left;
+  text-align: center;
+  opacity: revert;
+  padding-left: 6px;
+  -webkit-filter: contrast(100%) saturate(100%);
+  filter: contrast(100%) saturate(100%);
+}
+.textbox input{
+  border: none;
+  outline: none !important;
+  background: none;
+  color: #141764;
+  font-size: 18px;
+  width: 80%;
+  float: left;
+  margin: 0 10px;
+  font-family: "Ubuntu", sans-serif;
+  opacity: revert;
+  font-weight: bold;
+}
+.btn{
+  width: 50%;
+  background: none;
+  border: 2px solid #393536;
+  border-radius: 5px;
+  color: #141764;
+  padding: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 12px 71px;
+  font-family: "Ubuntu", sans-serif;
+  opacity: revert;
+  transition-duration: 0.4s;
+  -webkit-filter: contrast(100%) saturate(100%);
+  filter: contrast(100%) saturate(100%);
+  font-weight: bold;
+}
+.btn:hover {
+  background-color: #141764;
+  color: #f2f2f2;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+div.login-box {
+  border-radius: 20px 60px;
+  background-color: #BFBFBF;
+  padding: 20px;
+}
